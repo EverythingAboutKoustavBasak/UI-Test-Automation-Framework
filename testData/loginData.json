@@ -1,0 +1,13 @@
+{
+	
+	"data": [
+		{
+			"username": "testuser1@gmail.com",
+			"password": "password1"
+		},
+		{
+			"username": "joxel24027@hebase.com",
+			"password": "Test@123"
+		}
+	]
+}
