@@ -20,7 +20,7 @@ public class ExcelReaderUtility {
 		
 		
 		
-		File xlsxFile = new File(System.getProperty("user.dir")+"\\testData\\"+fileName);
+		File xlsxFile = new File(System.getProperty("user.dir")+"//testData//"+fileName);
 		
 		XSSFWorkbook xssfWorkbook = null;
 		
