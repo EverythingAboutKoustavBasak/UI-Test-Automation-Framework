@@ -17,10 +17,10 @@ public class ExtentReporterUtility {
 		
 		//trying to distinguish the report name by using date time 
 		Date date = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("HH-mm-ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 		String timeStamp = format.format(date);
 		
-		ExtentSparkReporter extentSparkReporter = new ExtentSparkReporter(System.getProperty("user.dir")+"//test-reports//"+reportName+" - "+timeStamp);
+		ExtentSparkReporter extentSparkReporter = new ExtentSparkReporter(System.getProperty("user.dir")+"//test-reports//"+reportName+"_"+timeStamp+".html");
 	    extentReports = new ExtentReports();
 	    extentReports.attachReporter(extentSparkReporter);
 	}
