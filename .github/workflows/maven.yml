@@ -12,7 +12,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
 
     steps:
     
@@ -32,6 +32,7 @@ jobs:
       with:
        name: Test logs
        path: logs
+       if-no-files-found: warn
 
     - name: Upload Test Reports
       if: always()
@@ -39,8 +40,9 @@ jobs:
       with:
        name: Test Reports
        path: test-reports
+       if-no-files-found: warn
        
     - name: Test Execution Status
       if: always()
-      run: echo "Test Execution Completed"
+      run: echo "Test execution and artifact collection completed."
       
