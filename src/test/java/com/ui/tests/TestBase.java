@@ -1,8 +1,6 @@
 package com.ui.tests;
 
 import com.constants.Browser;
-import com.constants.Browser.*;
-
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;

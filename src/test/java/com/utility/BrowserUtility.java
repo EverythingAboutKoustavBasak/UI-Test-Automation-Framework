@@ -8,9 +8,11 @@ import java.util.Date;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -163,6 +165,33 @@ public abstract class BrowserUtility {
 		logger.info("Text entered successfully into: " + locator);
 	}
 	
+	//perform sendKeys action
+	public void enterText(By locator, String textToEnter) {
+		logger.info("Finding Element with the locator" + locator);
+
+		WebElement element = driver.get().findElement(locator);
+//		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+		logger.info("Element Found and now enter text " + textToEnter);
+		element.sendKeys(textToEnter);
+		
+		logger.info("Text entered successfully into: " + locator);
+	}
+	
+	//sends special keys
+	public void enterSpecialKey(By locator, Keys keyToEnter) {
+		logger.info("Finding Element with the locator" + locator);
+		
+		WebElement element = driver.get().findElement(locator);
+		logger.info("Locator found - " + locator);
+//		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		
+		logger.info("Element Found and now enter Special text " + keyToEnter);
+		element.sendKeys(keyToEnter);
+		
+		logger.info("Spcial Key entered successfully into: " + locator);
+	}
+	
 	//get visible text of the element
 	public String getVisibleText(By locator) {
 		logger.info("Visible text of element " + locator + ": " +driver.get().findElement(locator).getText());
@@ -190,7 +219,7 @@ public abstract class BrowserUtility {
 		}
 		
 //		return destFile.getAbsolutePath();
-		 // Relative path from test-reports/report.html
+		 // Relative path
 	    return "../screenshots/" + destFile.getName();
 	}
 	
