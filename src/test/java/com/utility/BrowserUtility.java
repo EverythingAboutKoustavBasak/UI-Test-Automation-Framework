@@ -177,19 +177,21 @@ public abstract class BrowserUtility {
 		
 		//To distinguish the ss name we will use date time format
 		Date date = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("HH-mm-ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 		String timeStamp = format.format(date);
 		
 		
 		File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
-		File destFile = new File(System.getProperty("user.dir")+"//screenshots//"+fileName+" - "+timeStamp+".png");
+		File destFile = new File(System.getProperty("user.dir")+"//screenshots//"+fileName+"_"+timeStamp+".png");
 		try {
 			FileUtils.copyFile(srcFile, destFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		return destFile.getAbsolutePath(); 
+//		return destFile.getAbsolutePath();
+		 // Relative path from test-reports/report.html
+	    return "../screenshots/" + destFile.getName();
 	}
 	
 	//to close the browser session
