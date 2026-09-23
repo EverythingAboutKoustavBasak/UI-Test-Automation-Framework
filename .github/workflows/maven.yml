@@ -49,6 +49,34 @@ jobs:
        name: Test Reports
        path: test-reports
        if-no-files-found: warn
+
+    # 7. Prepare files for GitHub Pages
+    - name: Prepare Report for GitHub Pages
+      if: always()
+      run: |
+        mkdir -p public/extent-reports/test-reports
+
+        latest_report=$(ls -t test-reports/*.html | head -n 1)
+
+        echo "Latest report: $latest_report"
+
+        cp "$latest_report" public/extent-reports/test-reports/index.html
+
+        cp -R screenshots/ public/extent-reports/
+
+        echo "Files prepared for GitHub Pages:"
+        ls -la public/extent-reports/
+        ls -la public/extent-reports/test-reports/
+        ls -la public/extent-reports/screenshots/
+
+    # 8. Deploy report to GitHub Pages
+    - name: Deploy Report to GitHub Pages
+      if: always()
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: public/extent-reports/
+        token: ${{ secrets.PERSONAL_TOKEN }}
+        clean: true
        
     - name: Test Execution Status
       if: always()
