@@ -23,7 +23,7 @@ public class TestBase {
 	
 	@Parameters({"browser", "isLamda", "isHeadless"})
 	@BeforeMethod(description = "Setup the browser and navigate to the home page")
-	public void setup(@Optional("chrome") String browser, @Optional("false") boolean isLamda, @Optional("true") boolean isHeadless, ITestResult result) {
+	public void setup(@Optional("chrome") String browser, @Optional("false") boolean isLamda, @Optional("false") boolean isHeadless, ITestResult result) {
 		
 		logger.info("Browser = " + browser);
 		logger.info("isLamda = " + isLamda);

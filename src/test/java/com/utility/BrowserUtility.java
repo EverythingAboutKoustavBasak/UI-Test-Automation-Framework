@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
@@ -199,7 +200,7 @@ public abstract class BrowserUtility {
 		return driver.get().findElement(locator).getText();
 		
 	}
-	
+
 	//to take the ss
 	public String takeScreenshot(String fileName) {
 		TakesScreenshot screenshot =(TakesScreenshot)driver.get();

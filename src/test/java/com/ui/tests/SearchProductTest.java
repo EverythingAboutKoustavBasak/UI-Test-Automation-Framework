@@ -10,6 +10,8 @@ import com.ui.pages.MyAccountPage;
 public class SearchProductTest extends TestBase{
 
 	private MyAccountPage myAccountPage;
+	
+	
 	@BeforeMethod
 	public void setup() {
 		myAccountPage = homePage.gotoLoginPage().doLoginWith("joxel24027@hebase.com", "Test@123");
@@ -21,6 +23,7 @@ public class SearchProductTest extends TestBase{
 			groups = {"e2e","smoke","sanity"})
 			
 	public void verifyProductSearchTest() {
-		
+		String data = myAccountPage.searchForAProduct("Printed Summer Dress").getSearchResultTitle();
+		System.out.println(data);
 	}
 }
