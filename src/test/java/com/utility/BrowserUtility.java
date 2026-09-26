@@ -3,6 +3,7 @@ package com.utility;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -199,6 +200,29 @@ public abstract class BrowserUtility {
 //		return driver.findElement(locator).getText();
 		return driver.get().findElement(locator).getText();
 		
+	}
+	
+	//overloaded method
+	public String getVisibleText(WebElement element) {
+
+		logger.info("Returning the visibile Text: " + element.getText());
+
+		return element.getText();
+	}
+	
+	//get All visible text of the element
+	public List<String> getAllVisibleText(By locator) {
+		logger.info("Find All Elements with the locator: " + locator);
+		List<WebElement> elementList =  driver.get().findElements(locator);
+		logger.info("Elements Found & Printing the List of Element: ");
+		
+		List<String> visibleTextList = new ArrayList<>();
+		for (WebElement element : elementList) {
+			visibleTextList.add(getVisibleText(element));
+			
+		}
+		
+		return visibleTextList;
 	}
 
 	//to take the ss
