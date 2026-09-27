@@ -253,15 +253,15 @@ public abstract class BrowserUtility {
 	
 	
 	//Handle the select drop-down
-	public void selectFromDropdown(By dropDownLocator, String optionToSelect) {
+	public void selectFromDropdown(By dropDownLocator, String dropdownValueToSelect) {
 		logger.info("Locating dropdown element: " + dropDownLocator);
 		WebElement dropDownElement = driver.get().findElement(dropDownLocator);
 		logger.info("Dropdown element found successfully.");
 		
 		Select select = new Select(dropDownElement);
-		logger.info("Selecting dropdown option: " + optionToSelect);
-		select.selectByValue(optionToSelect);
-		logger.info("Dropdown option selected successfully: " + optionToSelect);
+		logger.info("Selecting dropdown option: " + dropdownValueToSelect);
+		select.selectByValue(dropdownValueToSelect);
+		logger.info("Dropdown option selected successfully: " + dropdownValueToSelect);
 		
 		
 	}
