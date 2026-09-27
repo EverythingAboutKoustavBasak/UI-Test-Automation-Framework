@@ -2,6 +2,7 @@ package com.utility;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.channels.SelectableChannel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,6 +22,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.Select;
 
 import com.constants.Browser;
 
@@ -247,6 +249,34 @@ public abstract class BrowserUtility {
 		 // Relative path
 	    return "../screenshots/" + destFile.getName();
 	}
+	
+	
+	
+	//Handle the select drop-down
+	public void selectFromDropdown(By dropDownLocator, String optionToSelect) {
+		logger.info("Locating dropdown element: " + dropDownLocator);
+		WebElement dropDownElement = driver.get().findElement(dropDownLocator);
+		logger.info("Dropdown element found successfully.");
+		
+		Select select = new Select(dropDownElement);
+		logger.info("Selecting dropdown option: " + optionToSelect);
+		select.selectByValue(optionToSelect);
+		logger.info("Dropdown option selected successfully: " + optionToSelect);
+		
+		
+	}
+	
+	//clearing the text which is present in the text box/text area
+	public void clearText(By locator) {
+		logger.info("Locating Element with the locator" + locator);
+		WebElement element = driver.get().findElement(locator);
+		logger.info("Element found successfully.");
+		
+		logger.info("Clearing the previous text");
+		element.clear();
+		logger.info("Text Cleared successfully from locator: " + locator);
+	}
+	
 	
 	//to close the browser session
 	public void quit() {
