@@ -161,6 +161,13 @@ public abstract class BrowserUtility {
 		logger.info("Successfully clicked element with locator: " + locator);
 	}
 	
+	//Overloaded click on method - clicking on the web elements
+	public void clickOn(WebElement element) {
+		logger.info("Finding web element");
+		element.click();
+		logger.info("Successfully clicked web element");
+	}
+	
 	//perform sendKeys action
 	public void sendKeys(By locator, String textToEnter) {
 		logger.info("Entering text into: " + locator);
@@ -225,6 +232,16 @@ public abstract class BrowserUtility {
 		}
 		
 		return visibleTextList;
+	}
+	
+	//get All the web element
+	public List<WebElement> getAllWebElements(By locator) {
+		logger.info("Find All Web Elements with the locator: " + locator);
+		List<WebElement> webElementsList =  driver.get().findElements(locator);
+		logger.info("All Web Elements found ");
+		
+		
+		return webElementsList;
 	}
 
 	//to take the ss

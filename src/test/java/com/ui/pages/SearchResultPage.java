@@ -12,7 +12,7 @@ public class SearchResultPage extends BrowserUtility {
 
 	private static final By PRODUCT_LISTING_TITLE_LOCATOR = By.xpath("//span[@class='lighter']");
 	private static final By ALL_PRODUCT_LISTS_NAME_LOCATOR = By
-			.xpath("//ul[@id = \"product_list\"]//h5[@itemprop=\"name\"]");
+			.xpath("//ul[@id='product_list']//h5[@itemprop='name']/a");
 
 	public SearchResultPage(WebDriver driver) {
 		super(driver);
@@ -62,6 +62,13 @@ public class SearchResultPage extends BrowserUtility {
 		// Every product contained at least one keyword.
 		return true;
 
+	}
+	
+	public void clickOntheProductAt(int index) {
+		
+		clickOn(getAllWebElements(ALL_PRODUCT_LISTS_NAME_LOCATOR).get(index));
+		
+		
 	}
 
 }
