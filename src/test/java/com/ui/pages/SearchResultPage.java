@@ -64,9 +64,10 @@ public class SearchResultPage extends BrowserUtility {
 
 	}
 	
-	public void clickOntheProductAt(int index) {
+	public ProductDetailsPage clickOntheProductAt(int index) {
 		
 		clickOn(getAllWebElements(ALL_PRODUCT_LISTS_NAME_LOCATOR).get(index));
+		return (new ProductDetailsPage(getDriver()));
 		
 		
 	}
