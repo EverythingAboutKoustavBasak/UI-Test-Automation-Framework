@@ -2,7 +2,6 @@ package com.utility;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.channels.SelectableChannel;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.firefox.HasFullPageScreenshot;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -264,14 +263,21 @@ public abstract class BrowserUtility {
 
 	// to take the ss
 	public String takeScreenshot(String fileName) {
-		TakesScreenshot screenshot = (TakesScreenshot) driver.get();
+		TakesScreenshot screenshot = (TakesScreenshot) driver.get(); // Take a screenshot of the current viewport.
 
+		//this is only compatible with the firefox browser not chrome 
+//		HasFullPageScreenshot screenshot =
+//	            (HasFullPageScreenshot) driver.get(); //Take a screenshot of the entire page, including content below the viewport.
+		
+		
 		// To distinguish the ss name we will use date time format
 		Date date = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 		String timeStamp = format.format(date);
 
 		File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
+//		File srcFile = screenshot.getFullPageScreenshotAs(OutputType.FILE);
+		
 		File destFile = new File(
 				System.getProperty("user.dir") + "//screenshots//" + fileName + "_" + timeStamp + ".png");
 		try {
