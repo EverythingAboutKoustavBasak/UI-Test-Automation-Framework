@@ -18,8 +18,8 @@ public final class LoginPage extends BrowserUtility{
 	private static final By ERROR_MESSAGE_LOCATOR = By.xpath("//div[contains(@class,\"alert-danger\")]//li");
 	
 	public MyAccountPage doLoginWith(String emailAdress, String password) {
-		sendKeys(EMAIL_TEXT_BOX_LOCATOR, emailAdress);
-		sendKeys(PASSWORD_TEXT_BOX_LOCATOR, password);
+		enterText(EMAIL_TEXT_BOX_LOCATOR, emailAdress);
+		enterText(PASSWORD_TEXT_BOX_LOCATOR, password);
 		clickOn(SUBMIT_BUTTON_LOCATOR);
 		
 //		MyAccountPage myAccountPage= new MyAccountPage(getDriver());
@@ -28,8 +28,8 @@ public final class LoginPage extends BrowserUtility{
 	}
 	
 	public LoginPage doLoginWithInvalidCredentials(String emailAdress, String password) {
-		sendKeys(EMAIL_TEXT_BOX_LOCATOR, emailAdress);
-		sendKeys(PASSWORD_TEXT_BOX_LOCATOR, password);
+		enterText(EMAIL_TEXT_BOX_LOCATOR, emailAdress);
+		enterText(PASSWORD_TEXT_BOX_LOCATOR, password);
 		clickOn(SUBMIT_BUTTON_LOCATOR);
 		
 		return new LoginPage(getDriver());

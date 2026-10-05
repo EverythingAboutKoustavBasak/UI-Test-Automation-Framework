@@ -185,13 +185,6 @@ public abstract class BrowserUtility {
 		logger.info("Successfully clicked web element");
 	}
 
-	// perform sendKeys action
-	public void sendKeys(By locator, String textToEnter) {
-		logger.info("Entering text into: " + locator);
-//		driver.findElement(locator).sendKeys(textToEnter);
-		driver.get().findElement(locator).sendKeys(textToEnter);
-		logger.info("Text entered successfully into: " + locator);
-	}
 
 	// perform sendKeys action
 	public void enterText(By locator, String textToEnter) {
